@@ -76,3 +76,7 @@ For process that takes some time and must be awaited!
 >   const movies = await axios.get("https://yts-proxy.now.sh/list_movies.json")
 >   
 >   }
+
+**gh-pages**
+
+Install gh-pages. Then @package.JSON, set *deploy* and *predeploy*, add homepage URI(github page URI), and depoly! How easy is that.
