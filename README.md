@@ -12,7 +12,7 @@ Made by Seung Wook Lee thanks to Nomad Coder
 
 When you need not to use *state*
 
-> function blah () { return blahlah }
+>   function blah () { return blahlah }
 
 
 **Class Component** allows you to use *state*. And functions underneath happen in order:
@@ -71,8 +71,8 @@ For process that takes some time and must be awaited!
 *await*: Telling React what you should wait for! Cannot use await without *Async*
 
 **Example**
-> getMovies = async () => {
+>   getMovies = async () => {
 >
->     const movies = await axios.get("https://yts-proxy.now.sh/list_movies.json")
+>   const movies = await axios.get("https://yts-proxy.now.sh/list_movies.json")
 >   
-> }
+>   }
