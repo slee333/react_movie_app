@@ -29,13 +29,13 @@ class App extends React.Component {
   render() {
     const { isLoading, movies } = this.state; // Get isLoading in this.state. AWESOMENESS of ES6!
     return (
-      <section class="container">
+      <section className="container">
         {isLoading ? (
           <div>
             <span className="loader_text">Now Loading...</span>
           </div>
         ) : (
-          <div class="movies">
+          <div className="movies">
             {movies.map(movie => (
               <Movie
                 key={movie.id}
@@ -44,6 +44,7 @@ class App extends React.Component {
                 title={movie.title}
                 poster={movie.medium_cover_image}
                 summary={movie.summary}
+                genres={movie.genres}
               />
             ))}
           </div>
