@@ -1,62 +1,38 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const flowerArray = [
-  {
-    id: 1,
-    name: "lavendar",
-    image:
-      "https://cdn.pixabay.com/photo/2016/01/21/10/09/lavendar-1153408_1280.jpg",
-      rating: 4.3
-  },
-  {
-    id: 2,
-    name: "jasmin",
-    image:
-      "https://cdn.pixabay.com/photo/2019/06/19/13/16/scent-of-jasmine-4284856_1280.jpg",
-    rating: 4.5
-  },
-  {
-    id: 3,
-    name: "rose",
-    image:
-      "https://cdn.pixabay.com/photo/2018/01/05/16/24/rose-3063284_1280.jpg",
-    rating: 3.2
-  },
-  {
-    id: 4,
-    name: "orchid",
-    image:
-      "https://cdn.pixabay.com/photo/2018/10/28/13/35/orchid-3778816_1280.jpg",
-    rating: 1.4
-  },
-  {
-    id: 5,
-    name: "lily",
-    image:
-      "https://cdn.pixabay.com/photo/2018/06/28/17/02/water-lily-3504363_1280.jpg",
-    rating: 3.9
-  }
-];
+class App extends React.Component {
+  // class App is React Component. It extends from React.Component. To show sth on the screen you render and return HTML
+  // React automatically renders these
+  // Reasons to use class components: state!
+  // state: object. you put your data (that will change) in here. 추후에 바뀌는 데이터를 넣는다!
+  state = {
+    count: 0
+  };
 
-function Flower({ name, pic, rating}) {
-  return (
-    <div>
-      <h2>Subtle odor of {name}</h2>
-      <h4>Rating: {rating}/5.0 </h4>
-      <img src={pic} alt={name} />
-    </div>
-  );
+  // Lets add a few JS code. Must use setState() to re-render your function!
+  add = () => {
+    // current: basically same as this.state. More neat and nice. Avoid overusage of this.setState
+    // this.setState({ count: this.state.count - 1 }); <--- so you don't have to do this
+    // Everytime you setState(), React renders again!
+    this.setState(current => ({ count: current.count + 1 }));
+  };
+  subtract = () => {
+    this.setState(current => ({ count: current.count - 1 }));
+  };
+  render() {
+    return (
+      <div>
+        <h1>Counting number: {this.state.count}</h1>
+        <button onClick={this.add}>Add</button>
+        <button onClick={this.subtract}>Subtract</button>
+      </div>
+    );
+  }
 }
 
-Flower.propTypes = {
-  // Write down discription of properties that I want to get. Check if it is 
-  name: PropTypes.string.isRequired,
-  pic: PropTypes.string.isRequired,
-  rating: PropTypes.number,
-};
-
 // Component App: Component is a function that returns HTML
+/* In this example we used function component
 function App() {
   return (
     <div className="App">
@@ -72,5 +48,6 @@ function App() {
     </div>
   );
 }
+*/
 
 export default App;
