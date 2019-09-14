@@ -20,6 +20,11 @@ class App extends React.Component {
   subtract = () => {
     this.setState(current => ({ count: current.count - 1 }));
   };
+
+  componentDidUpdate(){
+    console.log("Rapid update WHOO HOO!")
+  }
+
   render() {
     return (
       <div>
@@ -30,24 +35,5 @@ class App extends React.Component {
     );
   }
 }
-
-// Component App: Component is a function that returns HTML
-/* In this example we used function component
-function App() {
-  return (
-    <div className="App">
-      {// key and id: each react element must be unique. So we add this prop.
-      flowerArray.map(element => (
-        <Flower
-          key={element.id}
-          name={element.name}
-          pic={element.image}
-          rating={element.rating}
-        />
-      ))}
-    </div>
-  );
-}
-*/
 
 export default App;
