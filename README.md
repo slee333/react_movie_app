@@ -8,6 +8,13 @@ Made by Seung Wook Lee thanks to Nomad Coder
 
 #### class component 
 
+**Function Component**
+
+When you need not to use *state*
+
+> function blah () { return blahlah }
+
+
 **Class Component** allows you to use *state*. And functions underneath happen in order:
 
 **Mounting**: When component is born
@@ -37,6 +44,8 @@ Made by Seung Wook Lee thanks to Nomad Coder
 > };
 >
 > // Lets add a few JS code. Must use setState() to re-render your function!
+>
+>
 > add = () => {
 >   // current: basically same as this.state. More neat and nice. Avoid overusage of this.setState
 >   // this.setState({ count: this.state.count - 1 }); <--- so you don't have to do this
@@ -47,17 +56,23 @@ Made by Seung Wook Lee thanks to Nomad Coder
 >   this.setState(current => ({ count: current.count - 1 }));
 > };
 >
-> componentDidUpdate(){
->   console.log("Rapid update WHOO HOO!")
-> }
+
+### Making movie app
+
+#### Axios
+
+Fetch data! Better than JS's fetch()!
+
+#### Async / Await
+
+For process that takes some time and must be awaited!
+
+*Async*: Telling React that you gotta wait.
+*await*: Telling React what you should wait for! Cannot use await without *Async*
+
+**Example**
+> getMovies = async () => {
 >
-> render() {
->   return (
->     <div>
->       <h1>Counting number: {this.state.count}</h1>
->       <button onClick={this.add}>Add</button>
->       <button onClick={this.subtract}>Subtract</button>
->     </div>
->   );
-> }
+>     const movies = await axios.get("https://yts-proxy.now.sh/list_movies.json")
+>   
 > }

@@ -1,38 +1,30 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import axios from "axios";
+// axios: fetch data. Better than fetch()
+
 class App extends React.Component {
-  // class App is React Component. It extends from React.Component. To show sth on the screen you render and return HTML
-  // React automatically renders these
-  // Reasons to use class components: state!
-  // state: object. you put your data (that will change) in here. 추후에 바뀌는 데이터를 넣는다!
+  // Declaring some states, just to use them in future. Not that we add them later
+  // 그냥 나중에 추가 할 법 한 것들을 미리 선언해두기.
   state = {
-    count: 0
+    isLoading: true,
+    movies:[],
   };
-
-  // Lets add a few JS code. Must use setState() to re-render your function!
-  add = () => {
-    // current: basically same as this.state. More neat and nice. Avoid overusage of this.setState
-    // this.setState({ count: this.state.count - 1 }); <--- so you don't have to do this
-    // Everytime you setState(), React renders again!
-    this.setState(current => ({ count: current.count + 1 }));
-  };
-  subtract = () => {
-    this.setState(current => ({ count: current.count - 1 }));
-  };
-
-  componentDidUpdate(){
-    console.log("Rapid update WHOO HOO!")
+  getMovies = async () => {
+    const {data: {data : {movies} }} = await axios.get("https://yts-proxy.now.sh/list_movies.json")
+    this.setState({isLoading: false, movies})
+    console.log(this.state)
   }
-
+  componentDidMount() {
+    
+    // When component mounts, call getmovies()
+    this.getMovies();
+    
+  }
   render() {
-    return (
-      <div>
-        <h1>Counting number: {this.state.count}</h1>
-        <button onClick={this.add}>Add</button>
-        <button onClick={this.subtract}>Subtract</button>
-      </div>
-    );
+    const { isLoading } = this.state; // Get isLoading in this.state. AWESOMENESS of ES6!
+    return <div>{isLoading ? "Loading" : "We are ready haha"}</div>;
   }
 }
 
